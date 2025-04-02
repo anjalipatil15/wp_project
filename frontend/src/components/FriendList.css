@@ -1,0 +1,267 @@
+.friends-list {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #36393f;
+  }
+  
+  .friends-list__header {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(79, 84, 92, 0.48);
+  }
+  
+  .friends-list__tabs {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .friends-list__tab {
+    background: none;
+    border: none;
+    color: #8e9297;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: color 0.1s;
+  }
+  
+  .friends-list__tab:hover {
+    color: #dcddde;
+  }
+  
+  .friends-list__tab.active {
+    color: white;
+    background-color: rgba(79, 84, 92, 0.32);
+  }
+  
+  .friends-list__tab-icon {
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .friends-list__search {
+    position: relative;
+    width: 200px;
+  }
+  
+  .friends-list__search svg {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8e9297;
+  }
+  
+  .friends-list__search input {
+    width: 100%;
+    padding: 8px 8px 8px 32px;
+    background-color: #202225;
+    border: none;
+    border-radius: 4px;
+    color: #dcddde;
+    font-size: 14px;
+  }
+  
+  .friends-list__search input:focus {
+    outline: none;
+  }
+  
+  .friends-list__content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+  }
+  
+  .friends-list__section-header {
+    padding: 16px 8px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #8e9297;
+    text-transform: uppercase;
+  }
+  
+  .friends-list__items {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  .friend-item {
+    height: 62px;
+    padding: 16px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.1s;
+  }
+  
+  .friend-item:hover {
+    background-color: rgba(79, 84, 92, 0.16);
+  }
+  
+  .friend-item__avatar {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+  }
+  
+  .friend-item__avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .friend-item__status {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid #36393f;
+  }
+  
+  .friend-item__info {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .friend-item__name {
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .friend-item__status-text {
+    font-size: 12px;
+    color: #b9bbbe;
+  }
+  
+  .friend-item__actions {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .friend-item__action {
+    width: 36px;
+    height: 36px;
+    background-color: rgba(79, 84, 92, 0.32);
+    border: none;
+    border-radius: 50%;
+    color: #b9bbbe;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.1s, color 0.1s;
+  }
+  
+  .friend-item__action:hover {
+    background-color: rgba(79, 84, 92, 0.48);
+    color: #dcddde;
+  }
+  
+  .friend-item__action--accept {
+    background-color: #3ba55d;
+    color: white;
+  }
+  
+  .friend-item__action--accept:hover {
+    background-color: #2d7d46;
+    color: white;
+  }
+  
+  .friend-item__action--decline {
+    background-color: #ed4245;
+    color: white;
+  }
+  
+  .friend-item__action--decline:hover {
+    background-color: #c03537;
+    color: white;
+  }
+  
+  .friends-list__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    text-align: center;
+  }
+  
+  .friends-list__empty-image {
+    margin-bottom: 16px;
+  }
+  
+  .friends-list__empty-text {
+    font-size: 16px;
+    color: #8e9297;
+  }
+  
+  .friends-list__add-friend {
+    padding: 16px;
+  }
+  
+  .friends-list__add-friend h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #8e9297;
+    margin-bottom: 8px;
+  }
+  
+  .friends-list__add-friend p {
+    font-size: 14px;
+    color: #dcddde;
+    margin-bottom: 16px;
+  }
+  
+  .friends-list__add-form {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .friends-list__add-form input {
+    flex: 1;
+    padding: 8px 16px;
+    background-color: #202225;
+    border: none;
+    border-radius: 4px;
+    color: #dcddde;
+    font-size: 14px;
+  }
+  
+  .friends-list__add-form input:focus {
+    outline: none;
+  }
+  
+  .friends-list__add-form button {
+    padding: 8px 16px;
+    background-color: #5865f2;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.1s;
+  }
+  
+  .friends-list__add-form button:hover {
+    background-color: #4752c4;
+  }
+  
+  
