@@ -17,7 +17,7 @@
 }
 
 body {
-    background: linear-gradient(135deg, #292841 0%, #1a1a2e 100%);
+    background-image: linear-gradient(to bottom right, #090b29, #1A2081);
     color: var(--text-primary);
     font-family: 'Whitney', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     height: 100vh;

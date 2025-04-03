@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 // CSS Styles
 const styles = {
   container: {
     minHeight: '100vh',
     backgroundColor: '#1e2233',
-    backgroundImage: 'linear-gradient(to bottom right, #090b29, #1A2081)',
+    backgroundImage: 'radial-gradient(#2a2d57 0%, #1e2233 100%)',
     position: 'relative',
     fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
     margin: 0,
@@ -19,7 +18,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '40px 40px',
+    padding: '20px 40px',
     maxWidth: '1280px',
     margin: '0 auto',
     width: '100%'
@@ -33,8 +32,7 @@ const styles = {
   navLinks: {
     display: 'flex',
     alignItems: 'center',
-    gap: '24px',
-    marginLeft: 'auto' // Pushes login button to the right
+    gap: '24px'
   },
   navLink: {
     color: 'white',
@@ -47,11 +45,10 @@ const styles = {
     color: '#23272A',
     padding: '10px 16px',
     borderRadius: '40px',
-    fontWeight: 700,
-    fontSize: '16px',
+    fontWeight: 500,
+    fontSize: '14px',
     border: 'none',
-    cursor: 'pointer',
-    textDecoration: 'none'
+    cursor: 'pointer'
   },
   heroSection: {
     position: 'relative',
@@ -73,7 +70,8 @@ const styles = {
     flex: '1',
     display: 'flex',
     justifyContent: 'center',
-    maxWidth: '50%'
+    maxWidth: '50%',
+    zIndex: '1'
   },
   mainHeading: {
     fontSize: '64px',
@@ -122,9 +120,8 @@ const DiscordLandingPage = () => {
       {/* Navigation Bar */}
       <nav style={styles.navbar}>
         <a href="#" style={styles.logo}>Discord</a>
-        <div style={styles.navLinks}>
-          <Link to="/login" style={styles.loginButton}>Log In</Link>
-        </div>
+        
+        <button style={styles.loginButton}>Log In</button>
       </nav>
       
       {/* Hero Section */}
@@ -138,11 +135,20 @@ const DiscordLandingPage = () => {
         <div style={styles.heroImage}>
           <div style={styles.imageContainer}>
             <img 
-              src="https://placehold.co/600x400" 
+              src="/api/placeholder/600/400" 
               alt="Discord App Interface" 
               style={styles.discordApp}
             />
-            
+            <img 
+              src="/api/placeholder/120/120" 
+              alt="Character" 
+              style={{...styles.characterImg, ...styles.leftCharacter}}
+            />
+            <img 
+              src="/api/placeholder/120/120" 
+              alt="Character" 
+              style={{...styles.characterImg, ...styles.rightCharacter}}
+            />
           </div>
         </div>
       </section>
