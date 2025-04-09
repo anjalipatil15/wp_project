@@ -4,7 +4,6 @@ import { useState } from "react"
 import "./Message.css"
 import { MoreHorizontal, Edit, Trash, Reply } from "lucide-react"
 
-
 const Message = ({ message, isGrouped, isCurrentUser }) => {
   const [showActions, setShowActions] = useState(false)
   const [showAttachments, setShowAttachments] = useState(true)

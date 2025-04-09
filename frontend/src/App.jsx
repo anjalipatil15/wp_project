@@ -1,22 +1,40 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+"use client"
+
+import { useState, useEffect } from "react"
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
 import "./App.css"
-import Home from "./pages/Home";
-import Register from "./pages/Register"
 import Login from "./pages/Login"
-import FriendsList from "./FriendsList";
-
-
-
+import Register from "./pages/Register"
+import Home from "./pages/Home"
+import Server from "./pages/Server"
+import DirectMessage from "./pages/DirectMessage"
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+
+  // Check if user is authenticated
+  useEffect(() => {
+    // For demo purposes, we'll just set isAuthenticated to true
+    // In a real app, you would check for a token in localStorage or cookies
+    setIsAuthenticated(true)
+  }, [])
+
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/friendlist" element={<FriendsList />} />
-       </Routes>
+        <Route path="/login" element={isAuthenticated ? <Navigate to="/" /> : <Login />} />
+        <Route path="/register" element={isAuthenticated ? <Navigate to="/" /> : <Register />} />
+        <Route path="/" element={isAuthenticated ? <Home /> : <Navigate to="/login" />} />
+        <Route path="/servers/:serverId" element={isAuthenticated ? <Server /> : <Navigate to="/login" />} />
+        <Route
+          path="/servers/:serverId/channels/:channelId"
+          element={isAuthenticated ? <Server /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/direct-messages/:userId"
+          element={isAuthenticated ? <DirectMessage /> : <Navigate to="/login" />}
+        />
+      </Routes>
     </Router>
   )
 }
