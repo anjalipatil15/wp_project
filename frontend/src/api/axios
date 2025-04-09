@@ -1,0 +1,9 @@
+// src/api/axios.js
+import axios from "axios"
+
+const API = axios.create({
+  baseURL: "http://localhost:5000/api", // adjust if you're hosting backend elsewhere
+  withCredentials: true, // needed if using cookies for session auth
+})
+
+export default API

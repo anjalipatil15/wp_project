@@ -26,14 +26,7 @@ const UserPanel = ({ currentUser = {} }) => {
     <div className="user-panel">
       <div className="user-panel__profile">
         <div className="user-panel__avatar">
-          <img
-            src={currentUser.ProfilePicture || "/placeholder.svg?height=40&width=40"}
-            alt={currentUser.Username || "User"}
-          />
-          <div
-            className="user-panel__status"
-            style={{ backgroundColor: getStatusColor(currentUser.OnlineStatus) }}
-          ></div>
+
         </div>
         <div className="user-panel__info">
           <div className="user-panel__username">{currentUser.Username || "User"}</div>
