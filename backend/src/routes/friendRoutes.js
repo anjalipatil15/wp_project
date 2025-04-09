@@ -12,19 +12,11 @@ router.put('/requests/:friendshipId', auth, friendController.respondToFriendRequ
 // Get all friends
 router.get('/', auth, friendController.getFriends);
 
-// Get pending friend requests
-router.get('/requests', auth, friendController.getPendingRequests);
 
 // Remove friend
 router.delete('/:friendshipId', auth, friendController.removeFriend);
 
 // Block user
 router.post('/block', auth, friendController.blockUser);
-
-// Unblock user
-router.delete('/block/:friendshipId', auth, friendController.unblockUser);
-
-// Get blocked users
-router.get('/blocked', auth, friendController.getBlockedUsers);
 
 module.exports = router;

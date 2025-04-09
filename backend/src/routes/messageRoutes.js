@@ -5,7 +5,7 @@ const auth = require('../middleware/auth');
 const upload = require('../middleware/upload');
 
 // Send a message
-router.post('/channels/:channelId/messages', auth, upload.array('attachments', 5), messageController.sendMessage);
+router.post('/channels/:channelId/messages', messageController.sendMessage);
 
 // Get messages in a channel
 router.get('/channels/:channelId/messages', auth, messageController.getChannelMessages);
