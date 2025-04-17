@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="discordAuthApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discord Clone - Register</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="auth.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            discord: {
+              bg: '#36393f',
+              sidebar: '#2f3136',
+              serverlist: '#202225',
+              input: '#40444b',
+              button: '#5865f2',
+              buttonHover: '#4752c4',
+              text: '#dcddde',
+              muted: '#96989d',
+              link: '#00aff4',
+              error: '#f04747'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-discord-bg text-discord-text font-[Whitney,Helvetica_Neue,Helvetica,Arial,sans-serif]">
+  <div class="min-h-screen flex items-center justify-center p-4" ng-controller="RegisterController">
+    <div class="w-full max-w-md bg-discord-sidebar rounded-md shadow-lg p-8">
+      <div class="text-center mb-8">
+        <h1 class="text-white text-2xl font-bold mb-2">Create an account</h1>
+        <p class="text-discord-muted">Join the Discord community!</p>
+      </div>
+      
+      <form name="registerForm" ng-submit="submitRegister()" novalidate>
+        <!-- Email Field -->
+        <div class="mb-4">
+          <label class="block text-xs font-semibold uppercase mb-2">Email</label>
+          <input 
+            type="email" 
+            name="email" 
+            ng-model="user.email" 
+            required
+            ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"
+            class="w-full bg-discord-input text-discord-text p-2.5 rounded border-none outline-none"
+            ng-class="{'border-2 border-discord-error': registerForm.email.$invalid && registerForm.email.$touched}"
+          >
+          <div ng-show="registerForm.email.$invalid && registerForm.email.$touched" class="text-discord-error text-xs mt-1">
+            <span ng-show="registerForm.email.$error.required">Email is required</span>
+            <span ng-show="registerForm.email.$error.email">Please enter a valid email</span>
+          </div>
+        </div>
+        
+        <!-- Username Field -->
+        <div class="mb-4">
+          <label class="block text-xs font-semibold uppercase mb-2">Username</label>
+          <input 
+            type="text" 
+            name="username" 
+            ng-model="user.username" 
+            required
+            ng-minlength="3"
+            ng-maxlength="32"
+            class="w-full bg-discord-input text-discord-text p-2.5 rounded border-none outline-none"
+            ng-class="{'border-2 border-discord-error': registerForm.username.$invalid && registerForm.username.$touched}"
+          >
+          <div ng-show="registerForm.username.$invalid && registerForm.username.$touched" class="text-discord-error text-xs mt-1">
+            <span ng-show="registerForm.username.$error.required">Username is required</span>
+            <span ng-show="registerForm.username.$error.minlength">Username must be at least 3 characters</span>
+            <span ng-show="registerForm.username.$error.maxlength">Username cannot exceed 32 characters</span>
+          </div>
+        </div>
+        
+        <!-- Password Field -->
+        <div class="mb-4">
+          <label class="block text-xs font-semibold uppercase mb-2">Password</label>
+          <input 
+            type="password" 
+            name="password" 
+            ng-model="user.password" 
+            required
+            ng-minlength="8"
+            class="w-full bg-discord-input text-discord-text p-2.5 rounded border-none outline-none"
+            ng-class="{'border-2 border-discord-error': registerForm.password.$invalid && registerForm.password.$touched}"
+          >
+          <div ng-show="registerForm.password.$invalid && registerForm.password.$touched" class="text-discord-error text-xs mt-1">
+            <span ng-show="registerForm.password.$error.required">Password is required</span>
+            <span ng-show="registerForm.password.$error.minlength">Password must be at least 8 characters</span>
+          </div>
+        </div>
+        
+        <!-- Confirm Password Field -->
+        <div class="mb-4">
+          <label class="block text-xs font-semibold uppercase mb-2">Confirm Password</label>
+          <input 
+            type="password" 
+            name="confirmPassword" 
+            ng-model="user.confirmPassword" 
+            required
+            compare-to="user.password"
+            class="w-full bg-discord-input text-discord-text p-2.5 rounded border-none outline-none"
+            ng-class="{'border-2 border-discord-error': registerForm.confirmPassword.$invalid && registerForm.confirmPassword.$touched}"
+          >
+          <div ng-show="registerForm.confirmPassword.$invalid && registerForm.confirmPassword.$touched" class="text-discord-error text-xs mt-1">
+            <span ng-show="registerForm.confirmPassword.$error.required">Please confirm your password</span>
+            <span ng-show="registerForm.confirmPassword.$error.compareTo">Passwords don't match</span>
+          </div>
+        </div>
+        
+        <!-- Terms of Service -->
+        <div class="mb-6">
+          <label class="flex items-start">
+            <input 
+              type="checkbox" 
+              name="terms" 
+              ng-model="user.terms" 
+              required
+              class="mt-1 mr-2"
+            >
+            <span class="text-sm text-discord-muted">
+              I have read and agree to Discord's 
+              <a href="#" class="text-discord-link hover:underline">Terms of Service</a> and 
+              <a href="#" class="text-discord-link hover:underline">Privacy Policy</a>
+            </span>
+          </label>
+          <div ng-show="registerForm.terms.$invalid && registerForm.terms.$touched" class="text-discord-error text-xs mt-1">
+            <span ng-show="registerForm.terms.$error.required">You must agree to the Terms of Service</span>
+          </div>
+        </div>
+        
+        <!-- Register Button -->
+        <button 
+          type="submit" 
+          class="w-full bg-discord-button text-white font-medium py-2.5 rounded hover:bg-discord-buttonHover transition-colors"
+          ng-disabled="registerForm.$invalid"
+        >
+          Register
+        </button>
+        
+
+        <div ng-show="errorMessage" class="mt-4 text-discord-error text-center">
+          {{ errorMessage }}
+        </div>
+        
+
+        <div class="mt-4 text-discord-muted text-sm">
+          Already have an account? <a href="login.html" class="text-discord-link hover:underline">Log In</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
