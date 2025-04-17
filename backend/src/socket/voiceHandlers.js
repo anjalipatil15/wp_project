@@ -2,13 +2,13 @@ const voiceChannelService = require('../services/voicechannelService');
 const serverService = require('../services/serverService');
 
 module.exports = (io, socket) => {
-  // Join voice channel
+
   socket.on('voice:join', async (data) => {
     try {
       const { channelId } = data;
       const userId = socket.user.id;
 
-      // Check if channel exists
+
       const channels = await voiceChannelService.getVoiceChannelById(channelId);
       if (channels.length === 0) {
         return socket.emit('error', { message: 'Voice channel not found' });
@@ -16,13 +16,11 @@ module.exports = (io, socket) => {
 
       const channel = channels[0];
 
-      // Check if user is a member of the server
       const isMember = await serverService.isUserServerMember(userId, channel.ServerID);
       if (!isMember) {
         return socket.emit('error', { message: 'You are not a member of this server' });
       }
 
-      // Add user to voice channel
       await voiceChannelService.addUserToVoiceChannel({
         voiceChannelID: channelId,
         userID: userId,
@@ -31,7 +29,6 @@ module.exports = (io, socket) => {
         isDeafened: false
       });
 
-      // Join socket room for voice channel
       socket.join(`voice:${channelId}`);
 
       // Get all users in the voice channel

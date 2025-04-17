@@ -8,30 +8,30 @@ const upload = require('../middleware/upload');
 router.post('/channels/:channelId/messages', messageController.sendMessage);
 
 // Get messages in a channel
-router.get('/channels/:channelId/messages', auth, messageController.getChannelMessages);
+router.get('/channels/:channelId/messages', messageController.getChannelMessages);
 
 // Edit a message
-router.put('/messages/:messageId', auth, messageController.editMessage);
+router.put('/messages/:messageId',  messageController.editMessage);
 
 // Delete a message
-router.delete('/messages/:messageId', auth, messageController.deleteMessage);
+router.delete('/messages/:messageId',  messageController.deleteMessage);
 
 // Pin a message
-router.post('/messages/:messageId/pin', auth, messageController.pinMessage);
+router.post('/messages/:messageId/pin',  messageController.pinMessage);
 
 // Unpin a message
-router.delete('/messages/:messageId/pin', auth, messageController.unpinMessage);
+router.delete('/messages/:messageId/pin',  messageController.unpinMessage);
 
 // Get pinned messages in a channel
-router.get('/channels/:channelId/pins', auth, messageController.getPinnedMessages);
+router.get('/channels/:channelId/pins',  messageController.getPinnedMessages);
 
 // React to a message
-router.post('/messages/:messageId/reactions', auth, messageController.addReaction);
+router.post('/messages/:messageId/reactions',  messageController.addReaction);
 
 // Remove reaction from a message
-router.delete('/messages/:messageId/reactions/:reactionId', auth, messageController.removeReaction);
+router.delete('/messages/:messageId/reactions/:reactionId', messageController.removeReaction);
 
 // Get reactions for a message
-router.get('/messages/:messageId/reactions', auth, messageController.getReactions);
+router.get('/messages/:messageId/reactions',  messageController.getReactions);
 
 module.exports = router;

@@ -3,7 +3,6 @@ const messageService = require('../services/messageService');
 const path = require('path');
 const fs = require('fs');
 
-// Upload attachment
 exports.uploadAttachment = async (req, res, next) => {
   try {
     if (!req.file) {

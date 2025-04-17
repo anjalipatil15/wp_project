@@ -14,6 +14,7 @@ const channelRoutes = require('./src/routes/channelRoutes');
 const messageRoutes = require('./src/routes/messageRoutes');
 const friendRoutes = require('./src/routes/friendRoutes');
 const attachmentRoutes = require('./src/routes/attachmentRoutes');
+const dmRoutes = require('./src/routes/dmRoutes');
 
 dotenv.config();
 
@@ -43,6 +44,7 @@ app.use('/api/channels', channelRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/friends', friendRoutes);
 app.use('/api/attachments', attachmentRoutes);
+app.use('/api/dms', dmRoutes);
 
 app.use(errorHandler);
 
