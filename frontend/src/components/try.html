@@ -1,0 +1,121 @@
+&lt;!-- Main Content -->
+<div class="main-content">
+    &lt;!-- Channel Header -->
+    <div class="channel-header">
+        <h2 id="current-channel-name"># general</h2>
+        <div class="channel-actions">
+            <button id="show-pinned-btn" class="icon-button">
+                <i class="fas fa-thumbtack"></i>
+            </button>
+        </div>
+    </div>
+
+    &lt;!-- Messages Container -->
+    <div class="messages-container" id="messages-container">
+        &lt;!-- Messages will be populated here -->
+    </div>
+
+    &lt;!-- Message Input -->
+    <div class="message-input-container">
+        <form id="message-form">
+            <input type="text" id="message-input" placeholder="Type a message..." required>
+            <button type="submit" class="send-button">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </form>
+    </div>
+</div>
+
+&lt;!-- Pinned Messages Sidebar (Hidden by default) -->
+<div class="pinned-sidebar" id="pinned-sidebar">
+    <div class="pinned-header">
+        <h3>Pinned Messages</h3>
+        <button id="close-pinned-btn" class="icon-button">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <div class="pinned-messages" id="pinned-messages">
+        &lt;!-- Pinned messages will be populated here -->
+    </div>
+</div>
+</div>
+
+&lt;!-- Message Template (Hidden) -->
+<template id="message-template">
+<div class="message" data-message-id="">
+    <div class="message-avatar">
+        <img src="/placeholder.svg" alt="User Avatar">
+    </div>
+    <div class="message-content">
+        <div class="message-header">
+            <span class="message-author"></span>
+            <span class="message-time"></span>
+        </div>
+        <div class="message-text"></div>
+        <div class="message-actions">
+            <button class="reaction-button icon-button">
+                <i class="far fa-smile"></i>
+            </button>
+            <button class="edit-button icon-button">
+                <i class="far fa-edit"></i>
+            </button>
+            <button class="delete-button icon-button">
+                <i class="far fa-trash-alt"></i>
+            </button>
+            <button class="pin-button icon-button">
+                <i class="fas fa-thumbtack"></i>
+            </button>
+        </div>
+        <div class="reactions-container"></div>
+    </div>
+</div>
+</template>
+
+&lt;!-- Edit Message Modal (Hidden by default) -->
+<div class="modal" id="edit-modal">
+<div class="modal-content">
+    <div class="modal-header">
+        <h3>Edit Message</h3>
+        <button id="close-edit-modal" class="icon-button">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <form id="edit-message-form">
+        <input type="hidden" id="edit-message-id">
+        <textarea id="edit-message-text" required></textarea>
+        <button type="submit" class="primary-button">Save Changes</button>
+    </form>
+</div>
+</div>
+
+&lt;!-- Reaction Picker Modal (Hidden by default) -->
+<div class="modal" id="reaction-modal">
+<div class="modal-content">
+    <div class="modal-header">
+        <h3>Add Reaction</h3>
+        <button id="close-reaction-modal" class="icon-button">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <div class="emoji-grid">
+        <button class="emoji-button">👍</button>
+        <button class="emoji-button">👎</button>
+        <button class="emoji-button">❤️</button>
+        <button class="emoji-button">😂</button>
+        <button class="emoji-button">😮</button>
+        <button class="emoji-button">😢</button>
+        <button class="emoji-button">🎉</button>
+        <button class="emoji-button">🔥</button>
+    </div>
+</div>
+</div>
+
+&lt;!-- Loading Indicator -->
+<div class="loading-indicator" id="loading-indicator">
+<div class="spinner"></div>
+</div>
+
+&lt;!-- Toast Notifications -->
+<div class="toast-container" id="toast-container"></div>
+
+<script src="script.js"></script>
