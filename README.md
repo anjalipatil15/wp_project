@@ -1,17 +1,3 @@
-💬 Discord Clone
+# 💬 Discord Clone
 
-A full-stack real-time chat application inspired by Discord, built using modern web technologies. The project allows users to create servers, join channels, send messages, manage friends, and chat via direct messages — all within a sleek, responsive interface.
-
-🚀 Features
-
-🔐 Authentication System – Register, log in, and manage user sessions securely.
-
-🧠 Server Management – Create and join servers, each with multiple text channels.
-
-💬 Real-time Messaging – Send and receive messages instantly using WebSockets.
-
-👥 Direct Messages (DMs) – Chat privately with friends.
-
-📂 File & Media Sharing – Upload and share images or files.
-
-🟢 Online Status – See when your friends are online or offline.
+A full-stack web app inspired by Discord, built using React, Node.js, Express, and MySQL. It supports real-time messaging with Socket.io, user authentication via JWT, and server-channel based chat organization. The project demonstrates frontend-backend integration, database connectivity, and real-time communication in a clean, modern UI.
